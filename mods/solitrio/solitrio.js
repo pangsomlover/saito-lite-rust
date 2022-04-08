@@ -74,14 +74,13 @@ class Solitrio extends GameTemplate {
     this.loadGame(this.game.id);
 
     if (this.game.status != "") { this.updateStatus(this.game.status); }
+    if (this.game.dice == "") {
+      let random_number = Math.random();
+      this.game.dice = this.app.crypto.hash(random_number);
+    }
 
-     function Random(1,10){
-        return this.game.dice.ceil(this.game.dice.random()*9)+1;
-     }
-     function Ramdom (1,10){
-         return this.game.dice.round(this.game.dice.ramdom()*9)==0?2:this.game.dice.round(this.game.dice)*9)+1;
-     } 
-  founction Random()
+
+
     if (!this.game.state) {
 
       console.log("******Generating the Game******");
@@ -89,7 +88,7 @@ class Solitrio extends GameTemplate {
       this.game.queue = [];
       this.game.queue.push("round");
     }
- a     
+      
     console.log(JSON.parse(JSON.stringify(this.game)));
     if (this.browser_active){
       $('.slot').css('min-height', $('.card').css('min-height'));  
